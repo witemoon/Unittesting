@@ -1,0 +1,27 @@
+<div class="pn-wrap">
+  <div class="lease-prev"><img src="/assets/img/lftarrow.svg" alt="lftarrow"></div>
+  <div class="lease-next"><img src="/assets/img/rytarrow.svg" alt="rytarrow"></div>
+
+</div>
+
+<div class="ca-box-wrap">
+
+
+  <div class="  "
+       *ngFor="let item of leaseArray; let i=index;"
+       [ngClass]="{'leaseCardSelected':selectedLease==i}"
+       (click)="selectedLease=i;emitSelectedLeaseObj(item)"
+  >
+    <div class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">
+      <span class="" *ngIf="item['cardAlert']">{{item['cardAlert']}}</span>
+      <ul>
+        <li>
+          <label [ngClass]="{'leaseCardSelected':selectedLease==i}">Lease</label>
+          <br>
+          <span class="" [ngClass]="{'leaseCardSelected':selectedLease==i}">{{item['leaseNo']}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

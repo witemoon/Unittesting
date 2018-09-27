@@ -1,0 +1,149 @@
+<div id="signWrap" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 id="brandLogo" class="text-center">
+        <a>
+          <img src="./assets/img/firstdata_logo.svg" alt="firstdata_logo">
+        </a>
+      </h1>
+      <div class="formWrap ">
+        <div class="formWrapInner">
+
+          <h1 class="headingWrap">Change Your Password</h1>
+          <div class="tab-content" id="signin-tab-content">
+
+            <div class="tab-pane fade show active" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+              <p class="loginDesc">Please complete all fields below</p>
+
+              <!--ee-->
+
+              <form autocomplete="off" #changePass="ngForm" (submit)="changePassword(changePass)">
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Re-Enter Temporary Password"
+                    name="tempPass"
+                    ngModel
+                    required
+                    #tempPass="ngModel"
+                    #tmpPass
+                    pattern="Photon123"
+                    (blur)="onInputBlur($event);"
+                  >
+                 
+                    <div class="fd-error" (click)="hideTempPasswordError()"
+                    *ngIf="validationError.tempPasswordError && submitted">Incorrect temporary password
+                    </div>
+                  
+
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control "
+                    placeholder="Enter New Password"
+                    name="passwordNew"
+                    ngModel
+                    required
+                    maxlength="25"
+                    minlength="8"
+                    #pass
+                    (focus)="validate($event)"
+                    [formControl]="passwordFC"
+                    (blur)="onInputBlur($event);"
+                  >
+
+
+                  <div class="toolWrap " *ngIf="showError">
+                    <div class="toolInnerWrap">
+                      <div class="toolArrow"></div>
+
+                      <p>Password must be a minimum of 8. Include in the password upper and lower case, a number and a
+                        special character (i.e. @,#,$, %, & !):</p>
+                      <ul>
+                        <li>
+                          <span *ngIf="!upperAndLowerCase"><img src="./assets/img/ic_close.png" alt="ic_close">
+</span>
+                          <span *ngIf="upperAndLowerCase"><img src="./assets/img/ic_tick.png" alt="ic_tick"></span>
+                          Contains upper and lower case
+                        </li>
+                        <li>
+                          <span *ngIf="!number"><img src="./assets/img/ic_close.png" alt="ic_close"></span>
+                          <span *ngIf="number"><img src="./assets/img/ic_tick.png" alt="ic_tick"></span>
+                          At least one number
+                        </li>
+                        <li>
+                          <span *ngIf="!splChar"><img src="./assets/img/ic_close.png" alt="ic_close"></span>
+                          <span *ngIf="splChar"><img src="./assets/img/ic_tick.png" alt="ic_tick"></span>
+                          At least one special character
+                        </li>
+                        <li>
+                          <span *ngIf="!eightChar"><img src="./assets/img/ic_close.png" alt="ic_close"></span>
+                          <span *ngIf="eightChar"><img src="./assets/img/ic_tick.png" alt="ic_tick"></span>
+                          Be at least 8 characters
+                        </li>
+                      </ul>
+
+                    </div>
+                  </div>
+
+
+                  <div *ngIf="validationError.newPasswordError">
+                    <div class="fd-error" (click)="hidePasswordError()"
+                    *ngIf="validationError.newPasswordError && submitted">Incorrect password format
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control "
+                    placeholder="Confirm Your Password"
+                    name="confPassword"
+                    ngModel
+                    required
+                    validateEqual="passwordNew"
+                    #confPassword="ngModel"
+                    #cPass
+                    (focus)="validate($event)"
+                    (blur)="onInputBlur($event);"
+                  >
+
+                  <div *ngIf="validationError.confirmPasswordError">
+                    <div class="fd-error" (click)="hideConfPasswordError()"
+                    *ngIf="validationError.confirmPasswordError  && submitted">Passwords do not match
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="form-group cWrap">
+                    <re-captcha
+                      #captchaRef
+                      name="captcha"
+                      required
+                      ngModel
+                      (resolved)="captchaResolved()"
+                      ngModel></re-captcha>
+                  </div>
+                  <button type="submit" 
+                  [disabled]="!passwordValid"
+                  class="btnSubmit btn btn-primary btn-lg btn-block">
+                  Submit
+          </button>
+
+
+              </form>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

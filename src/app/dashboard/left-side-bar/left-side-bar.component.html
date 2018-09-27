@@ -1,0 +1,84 @@
+<div id="SidenavLftBut" class="sidenavB " [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft()">
+
+</div>
+
+<div id="SidenavLft" [ngClass]="{'ctrlWidthLft':lftSide}" class="sidenav">
+
+  <div class="lft-but-wrap">
+    <div class="loginname">{{leaseData["contactName"]}}
+    </div>
+    <div class="signout-Wrap" (click)="logout()">
+      <button class="btn spebutton"><span>Sign Out</span></button>
+    </div>
+
+
+  </div>
+  <ul class="lft-icon-wrap p-0">
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['home']">
+      <div class="icnWrap ls-home ">
+
+        <span class="nrtitle">Home</span>
+      </div>
+      <div class="extitle">Home</div>
+
+
+    </li>
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['epp']">
+      <div class="icnWrap ls-epp">
+
+        <span class="nrtitle">EPP</span>
+      </div>
+      <div class="extitle">EPP
+        <small>(Equipment Protection
+          Program)
+        </small>
+      </div>
+
+
+    </li>
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['claims']">
+      <div class="icnWrap ls-claims">
+
+        <span class="nrtitle">Claims</span>
+      </div>
+      <div class="extitle">Claims</div>
+
+
+    </li>
+    <li [hidden]="!showeol" [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }"
+        (click)="sidebarLft1()" [routerLink]="['eol']">
+      <div class="icnWrap ls-eol">
+
+        <span class="nrtitle">EOL</span>
+      </div>
+      <div class="extitle">End of Lease Options</div>
+
+
+    </li>
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['faq']">
+      <div class="icnWrap ls-faq ">
+
+        <span class="nrtitle">FAQ</span>
+      </div>
+      <div class="extitle">FAQ</div>
+
+
+    </li>
+    <li [routerLinkActive]="['active']" [ngClass]="{ 'tbut ctrlWidthLftB':lftSideBut }" (click)="sidebarLft1()"
+        [routerLink]="['contact']">
+      <div class="icnWrap ls-con">
+
+        <span class="nrtitle">Contact</span>
+      </div>
+      <div class="extitle">Contact Us</div>
+
+
+    </li>
+
+
+  </ul>
+</div>

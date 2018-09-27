@@ -1,0 +1,93 @@
+<div class="col logoWrap mobview  d-md-none d-block  ">
+
+
+  <div class="mobview-inner ">
+    <img class="" src="assets/img/firstdata_logo.svg" alt="firstdata_logo"></div>
+
+</div>
+<div class="col-12 db-header">
+  <div class="row">
+    <div class="col-5 d-md-block d-none logoWrap    ">
+      <img class="" src="assets/img/firstdata_logo.svg" alt="firstdata_logo">
+    </div>
+    <div class="fd-dd-mob text-center ">
+      <div class="dropdown d-inline-block d-md-none d-sm-block ">
+        <button class="btn   dropdown-toggle btn-outline-primary" type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          -Select Product-
+        </button>
+
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+          <button id="trigger3" class="dropdown-item">Clover Capital</button>
+          <div class="tt-outer-wrap mobdrop">
+            <div class="tt-wrap"><span id="tp3" placement="bottom" style="display: none;">Coming Soon</span></div>
+          </div>
+          <button id="trigger4" class="dropdown-item">Advanced Same Day Funding</button>
+          <div class="tt-outer-wrap mobdrop">
+            <div class="tt-wrap"><span id="tp4" placement="bottom" style="display: none;">Coming Soon</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-12 col-md-7   ">
+      <!--dropdown for Mobile-->
+
+
+      <div class="clearfix"></div>
+
+      <div class=" but-wrap  d-none d-md-block">
+
+
+        <!--tooltip One Starts-->
+        <div class="tt-outer-wrap ">
+          <button id="trigger1" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary"
+                  triggers="click:blur">Clover Capital
+          </button>
+        
+          <div class="tt-wrap"><span id="tp1" placement="bottom" style="display: none;">Coming Soon</span></div>
+
+        </div>
+        <!--tooltip One Starts-->
+        <div class="tt-outer-wrap ">
+          <button id="trigger2" type="button" class="btn btn-outline-secondary" class="btn btn-outline-primary"
+                  triggers="click:blur" class="btn btn-outline-primary ">Advanced Same Day Funding
+          </button>
+          <div class="tt-wrap"><span id="tp2" placement="bottom" style="display: none;">Coming Soon</span></div>
+        
+        </div>
+
+
+      </div>
+      <div class="icon-wrap  float-right">
+     
+
+
+        <div class="alertWrap   d-inline-block" data-toggle="modal" data-target="#alertspop"
+             (click)="showAlerts()">
+          <span class="fd-badge" *ngIf="alertCount.totalBadgeCount">{{alertCount.totalBadgeCount}}</span>
+          <img src="assets/img/alert.svg" alt="alert">
+          <br>
+          <span class="clearfix">Alerts</span>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- -------------alerts popup------------------- -->
+<div *ngIf="alertCount.totalBadgeCount">
+  <alerts-popup
+    [(showPopup)]="openPopup"
+    [equipmentLeaseCount]="alertCount.totalEquipmentCount"
+    [defaultLeaseCount]="alertCount.totalDefaultBadgeCount"
+  ></alerts-popup>
+</div>

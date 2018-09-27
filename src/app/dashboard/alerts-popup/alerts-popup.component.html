@@ -1,0 +1,47 @@
+<div class="modal fade" [ngClass]="{'show':showPopup}" id="alertspop" [style.display]="showPopup?'block':'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="closeButtonClicked()"><img
+          src="assets/img/close-icon.svg" alt="close-icon"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body ">
+
+        <div class="cntWrap  p-3" *ngIf="equipmentLeaseCount" data-dismiss="modal">
+          <div class="icon"><img src="assets/img/epp_m.svg" alt="epp_m"></div>
+          <div class="txt"><a [routerLink]="['/dashboard/epp']"><span>Equipment Protection Program <span class="cntnum">({{equipmentLeaseCount}})</span>  </span></a>
+          </div>
+
+
+        </div>
+
+        <div class="cntWrap  p-3 mt-2" *ngIf="defaultLeaseCount">
+
+          <div class="icon">
+          <img src="assets/img/default-icon.svg" alt="default-icon"></div>
+          <div class="txt"><a [routerLink]="['/dashboard/home']" data-dismiss="modal" (click)="closeButtonClicked()"><span>Default Lease<span class="cntnum">({{defaultLeaseCount}})</span> </span></a>
+          </div>
+
+
+        </div>
+        <!--<div class="cntWrap  p-3 " *ngIf="defaultLeaseCount">-->
+        <!--<a [routerLink]="['/dashboard/home']" data-dismiss="modal" (click)="closeButtonClicked()"> -->
+        <!--<img src="assets/img/default-icon.svg"><span>Default Lease({{defaultLeaseCount}}) </span></a>-->
+        <!---->
+        <!--</div>-->
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer ">
+      </div>
+
+    </div>
+  </div>
+</div>

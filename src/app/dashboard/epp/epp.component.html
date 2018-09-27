@@ -1,0 +1,254 @@
+<div class="loaderpop" *ngIf="loaderStatus">
+  <div class="loaderpop-inner">
+    <div class="loaderpop-inner-cnt">
+      <div class="lds-dual-ring"></div>
+      <div class="lds-dual-ring-s"></div>
+    </div>
+  </div>
+</div>
+<div *ngIf="dataReady">
+  <eppstatic [hidden]="!showeppstatic"></eppstatic>
+  <div [hidden]="showeppstatic">
+    <div class="col-12 db-inner-wrap  ">
+      <!--breadcrums Starts Here-->
+      <div class=" db-bread-wrap">
+        <ol class="breadcrumb  w-100">
+          <li class="breadcrumb-item">urLease</li>
+          <li class="breadcrumb-item">Dashboard</li>
+          <li class="breadcrumb-item active">EPP</li>
+        </ol>
+
+      </div>
+
+
+
+
+      <!--wraper for FAQ-->
+      <div class="db-inner-box col-12 epp eol ">
+        <!--EPP basic Details Starts-->
+        <div class="row  ">
+          <div class=" col-12  ">
+            <div class="details">
+              <div class="details-inner">
+                <label>Merchant Name:</label>
+                <span>{{merchantName}}</span>
+              </div>
+              <div class="details-inner">
+                <label>
+                  Contact Name:</label>
+                <span class="">{{contactName}}</span>
+              </div>
+              <div class="details-inner">
+                <label>Total Monthly EPP:</label>
+                <span class="activeBg">${{totalAmt}}.00</span>
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+        <!--EPP basic Details Ends-->
+
+
+        <!--Horizondal Line Starts-->
+        <div class="btmBorder"></div>
+        <!--Horizondal Line Starts-->
+
+
+        <!--Toggle Button Starts-->
+        <div class="row ">
+          <div class="col-12">
+            <!--warning txt Starts-->
+            <div class="eppalertwrap">
+              <div class="icon">
+                <img src="/assets/img/alertred.svg" alt="alertred">
+              </div>
+              <div class="txt">
+                You have the following leases that do not have any equipment protection coverage. Please select the leases for which you
+                would like to have EPP coverage.
+              </div>
+
+            </div>
+
+
+            <!--warning txt Ends-->
+
+
+            <!--Epp Lease toggles Starts-->
+
+            <div class="row">
+              <div class="toggleWrap" *ngIf="leaseData">
+                <div class="pn-wrap">
+                  <div class="lease-prev">
+                    <img src="/assets/img/lftarrow.svg" alt="lftarrow">
+                  </div>
+                  <div class="lease-next">
+                    <img src="/assets/img/rytarrow.svg" alt="rytarrow">
+                  </div>
+                </div>
+                <div class="epp-box-wrap">
+                  <div class="toggle-item-wrap" [ngClass]="{ 'active': leaseFormGroup.controls[item.leaseNo].value }" *ngFor="let item of leaseData">
+                    <div class="leftWrap">
+                      <p class="">Lease #</p>
+                      <p class="">{{item.leaseNo}}</p>
+                    </div>
+                    <div class="rightWrap">
+                      <p class="">
+                        <label class="switch">
+                          <input type="checkbox" class="togBtn" id="{{item.leaseNo}}" [formControl]="leaseFormGroup.controls[item.leaseNo]" (change)="onToggleChange($event)"
+                            value={{item.leaseNo}}>
+                          <span class="slider round en-first-checkbox"></span>
+                        </label>
+                      </p>
+                      <p class="">${{leaseFormGroup.controls[item.leaseNo].value?'10':'10'}}.00</p>
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--Epp Lease toggles Ends-->
+
+          </div>
+        </div>
+        <!--Toggle Button Ends-->
+
+        <!--Horizondal Line Starts-->
+
+        <div class="btmBorder"></div>
+        <!--Horizondal Line Starts-->
+
+
+        <!--Checkbox Boxes Wrap Starts Here-->
+        <div class="row ">
+          <div class="col-12">
+
+
+            <!--Check Box Starts-->
+
+            <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.yes }">
+              <input type="checkbox" [checked]="yesModel" [disabled]="checkbox.yes" name="option1" id="checkbox1" class="check1" value="yes"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox1" class="label1"> YES, I choose to enroll in First Data's Equipment Protection Program
+              </label>
+              <div class="clearfix"></div>
+
+              <input type="checkbox" [checked]="noModel" [disabled]="checkbox.no" name="option2" id="checkbox2" class="check2" value="no"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox2" class="label2"> NO, I am providing a certificate of insurance that names First Data as the loss payee to meet the insurance
+                requirement of my lease agreement. The insurance certificate is included with this response </label>
+            </div>
+            <!--Check Box Ends-->
+
+            <!--cnt Txt Starts-->
+            <div class="pdivwrap">
+              <p>
+                Enrollment in the First Data Equipment Protection Program relieves you of the requirement to maintain insurance on your leased
+                equipment</p>
+              <p>
+                <span>By checking YES above, the Lessee(s) is/are relived of their obligation to provide proof of insurance under
+                  the Lease Agreement.</span> Each lease that checks
+                <span>YES</span> above pays a monthly charge to FDMS, determined by FBMS and included on the monthly lease payment.
+                The monthly charge includes a program fee and compensation to EDMS for program administration. FDMS reserves
+                the right to change the monthly charge. We will notify you thirty (30) days prior to the effective date of
+                charge.</p>
+              <p>
+                <span>Board Protection:</span> The First Data Equipment Protection Program provides FULL REPLACEMENT protection
+                for loss due to a wide variety of perils.</p>
+              <!--cnt Txt Ends-->
+            </div>
+
+
+          </div>
+
+
+        </div>
+        <!--Checkbox Boxes Wrap Starts Here-->
+
+
+        <!--EPP  Covers List Starts-->
+        <div class="row  ">
+          <div class="col-6 listWrap leftWrap  pr-0 ">
+            <ul>
+              <li>
+                Accidental Damage
+              </li>
+              <li> Burglary Theft and Robbery</li>
+              <li> Collapse</li>
+              <li> Employee Theft</li>
+              <li> Falling Objects</li>
+              <li> Fire and Smoke
+            </ul>
+
+          </div>
+          <div class="col-6 listWrap rightWrap pl-0">
+            <ul>
+              <li>
+                Hail
+
+              </li>
+              <li> Flood and Water
+              </li>
+              <li>Lightning and Power Surge
+              </li>
+              <li> Transit
+              </li>
+              <li> Vandalism
+              </li>
+              <li> Wind, Hurricane and Tornado
+            </ul>
+
+          </div>
+          <div class=" ftrtxt ">Perils shown in bold above are often not covered by standard business insurance policies.
+          </div>
+        </div>
+        <!--EPP  Covers List  Ends-->
+
+
+        <!--Horizondal Line Starts-->
+        <div class="btmBorder"></div>
+        <!--Horizondal Line Starts-->
+
+
+        <!--submit but wrap Starts-->
+        <div class="row ftrBtnOuterWrap ">
+
+          <div class="col-sm-12 col-md-9">
+            <!--Check Box Starts-->
+            <div class="epp-cb-wrap" [ngClass]="{ 'opacity-disable' : checkbox.agree }">
+              <input type="checkbox" [checked]="agreeModel" [disabled]="checkbox.agree" name="option1" id="checkbox3" value="agree" class="check3"
+                (change)="onYesNoClicked($event)" />
+              <label for="checkbox3" class="label3"> I agree to the First Data Terms of Service and Privacy Policy
+              </label>
+
+            </div>
+            <!--Check Box Ends-->
+
+
+          </div>
+
+          <div class="col-sm-12 col-md-3 ftrBtnWrap  text-md-right text-center">
+            <button type="button" [disabled]="checkbox.submit" [routerLink]="['/dashboard/eppthank']" class="btn butSec" (click)="postEpp()">
+              Submit
+
+            </button>
+          </div>
+
+
+        </div>
+        <!--submit but wrap Startss-->
+      </div>
+
+
+    </div>
+
+    
+    <epp-popup *ngIf="showPopup" [noButtonPopup]="noButtonPopup" (addClicked)="addButtonClicked();" (closeClicked)="closePopup();"></epp-popup>
+
+    <epp-popup *ngIf="showPopup1" [noButtonPopup1]="noButtonPopup1" (closeClicked1)="closePopup1();"></epp-popup>
+  </div>
+</div>
